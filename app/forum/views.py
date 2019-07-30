@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+"""
+Index view.
+"""
 def index(request):
 
     topics = [
