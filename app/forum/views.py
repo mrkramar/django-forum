@@ -1,23 +1,14 @@
 from django.shortcuts import render
 
+from .models import Topic
+
 """
 Index view.
 """
 def index(request):
 
-    topics = [
-        {
-            'title': 'Cars',
-            'description': 'Discuss about your favorite cars here.'
-        },
-        {
-            'title': 'Design',
-            'description': 'Post your ideas.'
-        }
-    ]
-
     context = {
-        'topics': topics
+        'topics': Topic.objects.all()
     }
 
     return render(request, 'forum/index.html', context)
