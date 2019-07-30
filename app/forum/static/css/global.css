@@ -1,3 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    margin-top: 1em;
+}
+
+@keyframes typing { from { width: 0; } }
+@keyframes blink-caret { 50% { border-color: transparent; } }
 h1 {
-    color: #FCA205;
+    font-family: 'Roboto', sans-serif;
+    color: black;
+    text-transform: lowercase;
+    font-size: 4rem;
+    border-right: .1em solid;
+	width: 6ch; /* # of chars */
+	white-space: nowrap;
+	overflow: hidden;
+    animation: typing 0.8s steps(6, end), /* # of steps = # of chars */
+    blink-caret .5s step-end 0s alternate;
+}
+
+h2 {
+    font-family: 'Roboto', sans-serif;
+}
+
+.topics {
+    margin-top: 3em;
 }

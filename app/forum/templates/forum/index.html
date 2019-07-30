@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -9,12 +11,41 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
         <!-- Custom css -->
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
 
         <title>Forum</title>
     </head>
     <body>
-        <h1>Forum</h1>
+        <div class="container-fluid">
+
+            <div class="row vertical-align header">
+                <div class="col-3 offset-1">
+                    <h1>_forum</h1>
+                </div>
+                <div class="col-2 offset-6">
+                    <h3>login</h3>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <h2 class="showDelay">topics:</h2>
+                </div>
+            </div>
+
+            <div class="topics">
+                {% for topic in topics %}
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h3>{{ topic.title }}</h3>
+                            <p>{{ topic.description }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            </div>
+        </div>
         
 
 
