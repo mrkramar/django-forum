@@ -12,4 +12,5 @@ Django-based forum web application.
 ## TODO:
 
 - posts and comments formatting
+- search
 - private messages
