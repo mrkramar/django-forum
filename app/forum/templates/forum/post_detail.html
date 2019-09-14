@@ -1,0 +1,27 @@
+{% extends "forum/base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-2 offset-5 mt-5">
+                <h1 style="width: 6ch;">{{ object.title }}</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 offset-5 mt-5">
+            {% if object.author == user %}
+                <div>
+                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2 offset-5 mt-5">
+            {{ object.body }}
+        </div>
+    </div>
+
+{% endblock content %} 

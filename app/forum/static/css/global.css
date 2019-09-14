@@ -35,3 +35,8 @@ h2 {
 .topics {
     margin-top: 3em;
 }
+
+.topic_title {
+    margin-top:20px;
+    margin-bottom:2px;
+}

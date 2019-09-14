@@ -1,0 +1,19 @@
+{% extends "forum/base.html" %}
+{% block content %}
+
+    <div class="col-2 offset-5 mt-5">
+        <h1 style="width: 6ch;">{{ object.title }}</h1>
+    </div>
+
+    <div class="posts">
+        {% for post in posts %}
+            <div class="row post">
+                <div class="col-12 text-center">
+                    <a href="{% url 'post-detail' post.id %}"><h3 class="post_title">{{ post.title }}</h3></a>
+                    <p>{{ post.author }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock content %} 

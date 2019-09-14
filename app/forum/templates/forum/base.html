@@ -12,10 +12,33 @@
 
         <!-- Custom css -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
 
         <title>Forum</title>
     </head>
     <body>
+        
+
+        <div class="row vertical-align header">
+                <div class="col-3 offset-1">
+                    <a href ="{% url 'forum-index' %}"><i class="fas fa-comments fa-3x home-btn"></i></a>
+                </div>
+                {% if user.is_authenticated %}
+                    <div class="col-1 offset-5">
+                        <a href="{% url 'profile' %}"><h3>{{ user.username }}</h3></a>
+                    </div>
+                    <div class="col-1">
+                            <a href="{% url 'logout' %}"><h3>log out</h3></a>
+                        </div>
+                {% else %}
+                    <div class="col-1 offset-5">
+                        <a href="{% url 'login' %}"><h3>log in</h3></a>
+                    </div>
+                    <div class="col-1">
+                        <a href="{% url 'registration' %}"><h3>register</h3></a>
+                    </div>
+                {% endif %}
+            </div>
         <div class="container-fluid">
             {% block content %}{% endblock %}
         </div>
