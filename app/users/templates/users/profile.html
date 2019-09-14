@@ -1,0 +1,32 @@
+{% extends "forum/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="row align-items-center ">
+        <div class="col-2 offset-5 mt-5">
+            <h1 style="width: 9ch;">{{ user.username }}</h1>
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="media col-2 offset-5 mt-5">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" height="200">
+        </div>
+    </div>
+
+    <div class="row align-items-center">
+        <div class="col-2 offset-5 mt-5">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}

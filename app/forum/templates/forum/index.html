@@ -23,9 +23,12 @@
                     <h1>_forum</h1>
                 </div>
                 {% if user.is_authenticated %}
-                    <div class="col-1 offset-6">
-                        <a href="logout/"><h3>log out</h3></a>
+                    <div class="col-1 offset-5">
+                        <a href="profile/"><h3>{{ user.username }}</h3></a>
                     </div>
+                    <div class="col-1">
+                            <a href="logout/"><h3>log out</h3></a>
+                        </div>
                 {% else %}
                     <div class="col-1 offset-5">
                         <a href="login/"><h3>log in</h3></a>

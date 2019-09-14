@@ -13,6 +13,9 @@ class Topic(models.Model):
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
 
+    def __str__(self): 
+        return self.description
+
 class Post(models.Model):
     """
     Posts can be found under its topic.
