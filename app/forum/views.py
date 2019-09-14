@@ -1,5 +1,4 @@
 from django.shortcuts import render
-
 from .models import Topic
 
 """
@@ -12,3 +11,6 @@ def index(request):
     }
 
     return render(request, 'forum/index.html', context)
+
+def login(request):
+    return render(request, 'forum/login.html')

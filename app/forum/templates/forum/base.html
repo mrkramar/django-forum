@@ -17,47 +17,8 @@
     </head>
     <body>
         <div class="container-fluid">
-
-            <div class="row vertical-align header">
-                <div class="col-3 offset-1">
-                    <h1>_forum</h1>
-                </div>
-                {% if user.is_authenticated %}
-                    <div class="col-1 offset-6">
-                        <a href="logout/"><h3>log out</h3></a>
-                    </div>
-                {% else %}
-                    <div class="col-1 offset-5">
-                        <a href="login/"><h3>log in</h3></a>
-                    </div>
-                    <div class="col-1">
-                        <a href="registration/"><h3>register</h3></a>
-                    </div>
-                {% endif %}
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-12 text-center">
-                    <h2 class="showDelay">topics:</h2>
-                </div>
-            </div>
-
-            <div class="topics">
-                {% for topic in topics %}
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <h3>{{ topic.title }}</h3>
-                            <p>{{ topic.description }}</p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-
-            </div>
+            {% block content %}{% endblock %}
         </div>
-        
-
-
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

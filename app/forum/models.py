@@ -12,21 +12,20 @@ class Topic(models.Model):
     """
     title = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
-    posts = []
 
 class Post(models.Model):
     """
     Posts can be found under its topic.
     """
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
     body = models.TextField()
-    comments = []
+    topic = Topic
 
 class Comment(models.Model):
     """
     Comments are replies to posts
     """
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
     body = models.TextField()

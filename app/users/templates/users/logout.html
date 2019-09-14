@@ -1,0 +1,14 @@
+{% extends "forum/base.html" %}
+{% load static %}
+{% block content %}
+
+    <div class="row align-items-center ">
+        <div class="col-2 offset-5 mt-5">
+            <h1 style="width: 9ch;">logged out</h1>
+                <small class="text-muted">
+                    <a class="" href="{% url 'login' %}">Log-in again</a>
+                </small>
+        </div>
+    </div>
+
+{% endblock content %}
