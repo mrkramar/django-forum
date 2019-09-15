@@ -1,27 +1,69 @@
 {% extends "forum/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
     <div class="row">
-        <div class="col-2 offset-5 mt-5">
-                <h1 style="width: 6ch;">{{ object.title }}</h1>
+        <div class="col-4 offset-4 mt-5">
+                <h1 id="header">{{ object.title }}</h1>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-2 offset-5 mt-5">
-            {% if object.author == user %}
-                <div>
-                  <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
-                  <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+        
+        {% if object.author == user %}
+            <div class="col-4 offset-4">
+                <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">edit</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">delete</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-1 offset-4 ">
+            <img class="rounded-circle account-img thumbpic" src="{{ object.author.profile.image.url }}" height="50">
+        </div>
+
+        <div class="col-3 align-self-center">
+            <h5>{{ object.body }}<h5>
+        </div>
+    </div>
+
+    <div class="col-4 offset-4 mt-2">
+        <hr class="mt-5">
+    </div>
+
+    {% for comment in comments %}
+        <div class="row mt-4 mb-4">
+            <div class="col-1 offset-4 ">
+                <img class="rounded-circle account-img thumbpic" src="{{ comment.author.profile.image.url }}" height="50">
+            </div>
+            <div class="col-3 align-self-center">
+                <h5>{{ comment.body }}<h5>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="row mt-2">
+        <div class="col-1 offset-4 ">
+            <img class="rounded-circle account-img thumbpic" src="{{ user.profile.image.url }}" height="50">
+        </div>
+
+        <div class="col-3">
+            <form method="POST">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Submit</button>
                 </div>
-            {% endif %}
+            </form>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-2 offset-5 mt-5">
-            {{ object.body }}
-        </div>
-    </div>
-
+    
+    <script>
+        document.getElementById("div_id_author").style.display="none"
+        document.getElementById("div_id_post").style.display="none"
+        document.getElementById("div_id_body").getElementsByTagName('label')[0].style.display="none"
+    </script>
 {% endblock content %} 

@@ -35,6 +35,9 @@ class Comment(models.Model):
     """ Comments are replies to posts """
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    post = models.ForeignKey(Post, on_delete=models.SET_NULL, null=True)
     timestamp = models.DateTimeField(default=timezone.now)
     body = models.TextField()
-    post = Post
+
+    def __str__(self):
+        return self.body

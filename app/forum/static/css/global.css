@@ -32,6 +32,10 @@ h2 {
     font-family: 'Roboto', sans-serif;
 }
 
+h3,h5,p {
+    display: inline;
+}
+
 .topics {
     margin-top: 3em;
 }
@@ -39,4 +43,17 @@ h2 {
 .topic_title {
     margin-top:20px;
     margin-bottom:2px;
+}
+
+.post_title {
+    margin-right: 20px;
+}
+
+.thumbpic {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.btn {
+    border-radius: 0 !important;
 }
