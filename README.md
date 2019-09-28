@@ -1,6 +1,22 @@
 # django-forum
 Django-based forum web application with minimalist design.
 
+## Dependencies:
+ - `django`
+ - `django-crispy-forms`
+ 
+ You can install these using pip
+
+## Running:
+
+After cloning this repo, create the database:
+`pyton3 manage.py migrate --run-syncdb`
+
+and then create admin account by running:
+`pyton3 manage.py createsuperuser`
+
+Then you should be able to run the server and create some topics at localhost:8000/admin. I plan to create sample database with some data in future.
+
 ![](screenshots/topics.png)
 
 ## Features:
