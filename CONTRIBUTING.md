@@ -1,6 +1,7 @@
 ## Contributing
 
 If you want to contribute to a project and make it better, your help is very welcome.
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
 
 ### How to make a clean pull request
 
