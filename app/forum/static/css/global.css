@@ -17,7 +17,6 @@ body {
 @keyframes blink-caret { 50% { border-color: transparent; } }
 h1 {
     font-family: 'Roboto', sans-serif;
-    color: black;
     text-transform: lowercase;
     font-size: 4rem;
     border-right: .1em solid;
@@ -56,4 +55,25 @@ h3,h5,p {
 
 .btn {
     border-radius: 0 !important;
+}
+
+#theme-wrapper {
+    position: fixed; 
+    bottom: 0%;
+}
+
+footer {
+    margin-left: 1rem;
+}
+
+select#theme {
+    padding: .1rem .5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #ffffff00;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
