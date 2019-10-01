@@ -27,6 +27,13 @@ class TopicDetailView(DetailView):
         context['posts'] = Post.objects.filter(topic=self.kwargs.get('pk'))
         return context
 
+class TopicCreateView(LoginRequiredMixin, CreateView):
+    model = Topic
+    fields = ['title', 'description']
+
+    def form_valid(self, form):
+        return super().form_valid(form)
+
 # Post views
 
 class PostDetailView(LoginRequiredMixin, FormMixin, DetailView):

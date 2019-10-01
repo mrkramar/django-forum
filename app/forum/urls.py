@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
+    TopicCreateView,
     TopicListView,
     TopicDetailView,
     PostCreateView,
@@ -13,6 +14,7 @@ from .views import (
 
 urlpatterns = [
     path('', TopicListView.as_view(), name='forum-index'),
+    path('topic/add/', TopicCreateView.as_view(), name='topic-add'),
     path('topic/<int:pk>/', TopicDetailView.as_view(), name='topic-detail'),
 
     path('topic/<int:pk>/newpost/', PostCreateView.as_view(), name='post-create'),
