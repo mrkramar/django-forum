@@ -57,6 +57,12 @@ h3,h5,p {
     border-radius: 0 !important;
 }
 
+#topic-add {
+    text-align: center;
+}
+#topic-add a { opacity: 0.5; transition: 0.3s; }
+#topic-add a:hover { opacity: 1; }
+
 #theme-wrapper {
     position: fixed; 
     bottom: 0%;
