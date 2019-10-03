@@ -28,7 +28,7 @@
                         <a href="{% url 'logout' %}"><h3>log out</h3></a>
                     </div>
                     <div class="col-1 text-right align-self-center">
-                            <a href="{% url 'profile' %}"><img class="rounded-circle account-img thumbpic" src="{{ user.profile.image.url }}" height="50"></a>
+                            <a href="{% url 'profile' username=user.username %}"><img class="rounded-circle account-img thumbpic" src="{{ user.profile.image.url }}" height="50"></a>
                             
                         </div>
                 {% else %}
