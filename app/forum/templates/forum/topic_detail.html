@@ -16,8 +16,10 @@
             <div class="row post mb-4">
                 <div class="col-4 offset-4 text-center">
                     <a href="{% url 'post-detail' post.id %}">
-                        <h3 class="post_title">{{ post.title }}</h3></a> <p> by {{ post.author }} </p> 
-                        <img class="rounded-circle account-img thumbpic" src="{{ post.author.profile.image.url }}" height="25">
+                        <h3 class="post_title">{{ post.title }}</h3></a> <p> by {{ post.author }} </p>
+                        <a href="{% url 'profile' username=post.author.profile.user.username %}">
+                            <img class="rounded-circle account-img thumbpic" src="{{ post.author.profile.image.url }}" height="25">
+                        </a>
                     </a>
                     <hr>
                 </div>

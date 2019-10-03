@@ -20,7 +20,9 @@
 
     <div class="row mt-4">
         <div class="col-1 offset-4 ">
-            <img class="rounded-circle account-img thumbpic" src="{{ object.author.profile.image.url }}" height="50">
+            <a href="{% url 'profile' username=object.author.profile.user.username %}">
+                <img class="rounded-circle account-img thumbpic" src="{{ object.author.profile.image.url }}" height="50">
+            </a>
         </div>
 
         <div class="col-3 align-self-center">
@@ -35,7 +37,9 @@
     {% for comment in comments %}
         <div class="row mt-4 mb-4">
             <div class="col-1 offset-4 ">
-                <img class="rounded-circle account-img thumbpic" src="{{ comment.author.profile.image.url }}" height="50">
+                <a href="{% url 'profile' username=comment.author.profile.user.username %}">
+                    <img class="rounded-circle account-img thumbpic" src="{{ comment.author.profile.image.url }}" height="50">
+                </a>
             </div>
             <div class="col-3 align-self-center">
                 <h5>{{ comment.body }}<h5>
