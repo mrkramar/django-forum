@@ -39,4 +39,28 @@
 
     {% endif %}
 
+    {% if posts %}
+    
+        <div class="row align-items-center ">
+            <div class="col-2 offset-5 mt-5">
+                <h2>user posts</h2>
+            </div>
+        </div>
+
+        {% for post in posts %}
+            <div class="row mt-4 mb-4">
+                <div class="col-1 offset-4">
+                    <img class="rounded-circle account-img thumbpic" src="{{ post.author.profile.image.url }}" height="50">
+                </div>
+                <div class="col-3 align-self-center">
+                    <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
+                    <br />
+                    <p>{{ post.body }}</p>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+
+    {% endif %}
+
 {% endblock content %}
