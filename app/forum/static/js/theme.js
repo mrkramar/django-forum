@@ -1,24 +1,12 @@
-function loadThemeCSS(theme){
-    var fileref = document.createElement("link");
-    fileref.rel = "stylesheet";
-    fileref.type = "text/css";
-    fileref.href = "{% static 'css/light-theme.css' %}";
-
-    if(theme == "dark"){
-        fileref.href = "{% static 'css/dark-theme.css' %}"
-    }else if(theme == "cyber"){
-        fileref.href = "{% static 'css/cyber-theme.css' %}"
-    }
-
-    document.getElementsByTagName("head")[0].appendChild(fileref);
-}
-
 function onThemeChange() {
-    var selected = document.getElementById("theme").value
-    registerTheme(selected);
+    var theme = getCookie("theme") == "light" ? "dark" : "light";   
+    
+    document.getElementById('darkSwitch').checked = theme == "dark";
+    registerTheme(theme);
 
-    loadThemeCSS(selected);
-    window.location.reload(false);
+    setInterval(() => {
+        window.location.reload(false);
+    }, 250);
 }
 
 function registerTheme(theme){
@@ -45,7 +33,7 @@ function getCookie(cname) {
 function loadTheme(){
     var theme = getCookie("theme");
     if(theme == "") theme = "light";
-    document.getElementById('theme').value=theme;
+    document.getElementById('darkSwitch').checked = theme == "dark";
     loadThemeCSS(theme);
 }
 

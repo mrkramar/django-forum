@@ -72,14 +72,44 @@ footer {
     margin-left: 1rem;
 }
 
-select#theme {
-    padding: .1rem .5rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: #ffffff00;
-    color: #495057;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+#theme-wrapper input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+#theme-wrapper label {
+    cursor: pointer;
+    text-indent: -9999px;
+	width: 50px;
+	height: 20px;
+	background: grey;
+	display: block;
+	border-radius: 12px;
+	position: relative;
+}
+
+#theme-wrapper label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	border-radius: 10px;
+	transition: 0.3s;
+}
+
+#theme-wrapper input:checked + label {
+	background: #bada55;
+}
+
+#theme-wrapper input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+#theme-wrapper label:active:after {
+	width: 30px;
 }

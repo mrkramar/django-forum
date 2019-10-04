@@ -60,12 +60,11 @@
                 var fileref = document.createElement("link");
                 fileref.rel = "stylesheet";
                 fileref.type = "text/css";
-                fileref.href = "{% static 'css/light-theme.css' %}";
 
                 if(theme == "dark"){
-                    fileref.href = "{% static 'css/dark-theme.css' %}"
-                }else if(theme == "cyber"){
-                    fileref.href = "{% static 'css/cyber-theme.css' %}"
+                    fileref.href = "{% static 'css/dark-theme.css' %}";
+                }else{
+                    fileref.href = "{% static 'css/light-theme.css' %}";
                 }
 
                 document.getElementsByTagName("head")[0].appendChild(fileref);
@@ -73,12 +72,9 @@
         </script>
         
         <div id="theme-wrapper">
-            <label>Theme:</label>
-            <select id="theme" onchange="onThemeChange();">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="cyber">Cyber</option>
-            </select>
+            <p>Dark Mode</p>
+            <input class="switch" type="checkbox" id="darkSwitch" />
+            <label class="switch" for="switch" onclick="onThemeChange();">Toggle</label>
         </div>
 
     </footer>
