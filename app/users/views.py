@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
+from forum.models import Post
+
 def registration(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -36,16 +38,20 @@ def profile(request, username=None):
             u_form.save()
             p_form.save()
             messages.success(request, f'Your account has been updated!')
-            return redirect('profile')
+            return redirect('profile', username=request.user.username)
 
     else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
-
         context = {
-            'u_form': u_form,
-            'p_form': p_form
+            'posts': Post.objects.filter(author=User.objects.get(username=username))
         }
+
+        if request.user.username == username:
+            u_form = UserUpdateForm(instance=request.user)
+            p_form = ProfileUpdateForm(instance=request.user.profile)
+
+            context['u_form'] = u_form
+            context['p_form'] = p_form
+        
         if username is not None:
             user = User.objects.get(username=username)
             context['user'] = user
