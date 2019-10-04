@@ -15,7 +15,6 @@
     </div>
 
     {% if user == request.user %}
-
     <div class="row align-items-center">
         <div class="col-2 offset-5 mt-5">
             <form method="POST" enctype="multipart/form-data">
@@ -28,6 +27,13 @@
                     <button class="btn btn-outline-info" type="submit">Update</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    {% else %}
+    <div class="row align-items-center">
+        <div class="media col-2 offset-5 mt-5">
+            <p>{{ user.profile.about }}</p>
         </div>
     </div>
 
