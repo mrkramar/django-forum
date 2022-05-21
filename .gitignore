@@ -105,5 +105,3 @@ venv.bak/
 .mypy_cache/
 
 # custom
-
-/app/forum/migrations
