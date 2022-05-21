@@ -6,7 +6,7 @@ from django.views.generic import (
     DetailView,
     CreateView,
     UpdateView,
-    DeleteView
+    DeleteView,
 )
 
 from .models import Topic, Post, Comment
@@ -14,27 +14,32 @@ from .forms import CreateCommentForm
 
 # Topic views
 
+
 class TopicListView(ListView):
     model = Topic
-    template_name = 'forum/index.html'  # <app>/<model>_<viewtype>.html
-    context_object_name = 'topics'
+    template_name = "forum/index.html"  # <app>/<model>_<viewtype>.html
+    context_object_name = "topics"
+
 
 class TopicDetailView(DetailView):
     model = Topic
 
     def get_context_data(self, **kwargs):
         context = super(TopicDetailView, self).get_context_data(**kwargs)
-        context['posts'] = Post.objects.filter(topic=self.kwargs.get('pk'))
+        context["posts"] = Post.objects.filter(topic=self.kwargs.get("pk"))
         return context
+
 
 class TopicCreateView(LoginRequiredMixin, CreateView):
     model = Topic
-    fields = ['title', 'description']
+    fields = ["title", "description"]
 
     def form_valid(self, form):
         return super().form_valid(form)
 
+
 # Post views
+
 
 class PostDetailView(LoginRequiredMixin, FormMixin, DetailView):
     model = Post
@@ -42,13 +47,15 @@ class PostDetailView(LoginRequiredMixin, FormMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
-        context['comments'] = Comment.objects.filter(post=self.kwargs.get('pk'))
-        context['form'] = CreateCommentForm(initial={'post': self.object, 'author': self.request.user})
+        context["comments"] = Comment.objects.filter(post=self.kwargs.get("pk"))
+        context["form"] = CreateCommentForm(
+            initial={"post": self.object, "author": self.request.user}
+        )
 
         return context
 
     def get_success_url(self):
-        return reverse('post-detail', kwargs={'pk': self.object.id})
+        return reverse("post-detail", kwargs={"pk": self.object.id})
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
@@ -62,18 +69,20 @@ class PostDetailView(LoginRequiredMixin, FormMixin, DetailView):
         form.save()
         return super(PostDetailView, self).form_valid(form)
 
+
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'body']
+    fields = ["title", "body"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        form.instance.topic = Topic.objects.get(pk=self.kwargs['pk'])
+        form.instance.topic = Topic.objects.get(pk=self.kwargs["pk"])
         return super().form_valid(form)
+
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'body']
+    fields = ["title", "body"]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -85,20 +94,24 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             return True
         return False
 
+
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Post
-    success_url = '/'
+    success_url = "/"
 
     def test_func(self):
         post = self.get_object()
         if self.request.user == post.author:
             return True
-        return False    
+        return False
+
 
 # Static pages
 
+
 def login(request):
-    return render(request, 'forum/login.html')
+    return render(request, "forum/login.html")
+
 
 def logout(request):
-    return render(request, 'forum/logout.html')
+    return render(request, "forum/logout.html")
