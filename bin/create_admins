@@ -1,5 +1,4 @@
 #!/bin/sh
-
 cat << EOF | python manage.py shell
 from django.contrib.auth import get_user_model
 
