@@ -1,7 +1,7 @@
 {% extends "forum/base.html" %}
 {% block content %}
 
-    <div class="col-2 offset-5 mt-5">
+    <div class="">
             <h1 style="width: 6ch;">topics</h1>
     </div>
 
@@ -15,10 +15,10 @@
 
     <div class="topics">
         {% for topic in topics %}
-            <div class="row">
-                <div class="col-2 offset-5 text-center">
-                    <a href="{% url 'topic-detail' topic.id %}"><h3 class="row topic_title">{{ topic.title }}</h3></a>
-                    <p class="row">{{ topic.description }}</p>
+            <div class="">
+                <div class="">
+                    <a href="{% url 'topic-detail' topic.id %}"><h3 class="topic_title">{{ topic.title }}</h3></a>
+                    <p class="">{{ topic.description }}</p>
                     <hr>
                 </div>
             </div>

@@ -2,37 +2,37 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <div class="row align-items-center ">
-        <div class="col-2 offset-5 mt-5">
+    <div class="">
+        <div class="">
             <h1 id="header">{{ user.username }}</h1>
         </div>
     </div>
 
-    <div class="row align-items-center">
-        <div class="media col-2 offset-5 mt-5">
-            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}" height="200">
+    <div class="">
+        <div class="">
+            <img class="account-img" src="{{ user.profile.image.url }}" height="200">
         </div>
     </div>
 
     {% if user == request.user %}
-    <div class="row align-items-center">
-        <div class="col-2 offset-5 mt-5">
+    <div class="">
+        <div class="">
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                <fieldset class="form-group">
+                <fieldset class="">
                     {{ u_form|crispy }}
                     {{ p_form|crispy }}
                 </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Update</button>
+                <div class="">
+                    <button class="" type="submit">Update</button>
                 </div>
             </form>
         </div>
     </div>
 
     {% else %}
-    <div class="row align-items-center">
-        <div class="media col-2 offset-5 mt-5">
+    <div class="">
+        <div class="">
             <p>{{ user.profile.about }}</p>
         </div>
     </div>
@@ -41,18 +41,18 @@
 
     {% if posts %}
     
-        <div class="row align-items-center ">
-            <div class="col-2 offset-5 mt-5">
+        <div class=" ">
+            <div class="">
                 <h2>user posts</h2>
             </div>
         </div>
 
         {% for post in posts %}
-            <div class="row mt-4 mb-4">
-                <div class="col-1 offset-4">
-                    <img class="rounded-circle account-img thumbpic" src="{{ post.author.profile.image.url }}" height="50">
+            <div class="">
+                <div class="c">
+                    <img class="thumbpic" src="{{ post.author.profile.image.url }}" height="50">
                 </div>
-                <div class="col-3 align-self-center">
+                <div class="">
                     <a href="{% url 'post-detail' post.id %}">{{ post.title }}</a>
                     <br />
                     <p>{{ post.body }}</p>

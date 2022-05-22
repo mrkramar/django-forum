@@ -2,64 +2,64 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <div class="row">
-        <div class="col-4 offset-4 mt-5">
+    <div class="">
+        <div class="">
                 <h1 id="header">{{ object.title }}</h1>
         </div>
     </div>
 
-    <div class="row">
+    <div class="">
         
         {% if object.author == user %}
-            <div class="col-4 offset-4">
-                <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">edit</a>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">delete</a>
+            <div class="">
+                <a class="" href="{% url 'post-update' object.id %}">edit</a>
+                <a class="" href="{% url 'post-delete' object.id %}">delete</a>
             </div>
         {% endif %}
     </div>
 
-    <div class="row mt-4">
-        <div class="col-1 offset-4 ">
+    <div class="">
+        <div class="">
             <a href="{% url 'profile' username=object.author.profile.user.username %}">
-                <img class="rounded-circle account-img thumbpic" src="{{ object.author.profile.image.url }}" height="50">
+                <img class="thumbpic" src="{{ object.author.profile.image.url }}" height="50">
             </a>
         </div>
 
-        <div class="col-3 align-self-center">
+        <div class="">
             <h5>{{ object.body }}<h5>
         </div>
     </div>
 
-    <div class="col-4 offset-4 mt-2">
-        <hr class="mt-5">
+    <div class="">
+        <hr class="">
     </div>
 
     {% for comment in comments %}
-        <div class="row mt-4 mb-4">
-            <div class="col-1 offset-4 ">
+        <div class="">
+            <div class="">
                 <a href="{% url 'profile' username=comment.author.profile.user.username %}">
-                    <img class="rounded-circle account-img thumbpic" src="{{ comment.author.profile.image.url }}" height="50">
+                    <img class="thumbpic" src="{{ comment.author.profile.image.url }}" height="50">
                 </a>
             </div>
-            <div class="col-3 align-self-center">
+            <div class="">
                 <h5>{{ comment.body }}<h5>
             </div>
         </div>
     {% endfor %}
 
-    <div class="row mt-2">
-        <div class="col-1 offset-4 ">
-            <img class="rounded-circle account-img thumbpic" src="{{ user.profile.image.url }}" height="50">
+    <div class="">
+        <div class="">
+            <img class="thumbpic" src="{{ user.profile.image.url }}" height="50">
         </div>
 
-        <div class="col-3">
+        <div class="">
             <form method="POST">
                 {% csrf_token %}
-                <fieldset class="form-group">
+                <fieldset class="">
                     {{ form|crispy }}
                 </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Submit</button>
+                <div class="">
+                    <button class="" type="submit">Submit</button>
                 </div>
             </form>
         </div>

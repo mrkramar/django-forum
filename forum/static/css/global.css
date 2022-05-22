@@ -1,115 +1,63 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-body {
-    
-}
-
 .vertical-align {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .header {
-    margin-top: 1em;
+	margin-top: 1em;
 }
 
-@keyframes typing { from { width: 0; } }
-@keyframes blink-caret { 50% { border-color: transparent; } }
 h1 {
-    font-family: 'Roboto', sans-serif;
-    text-transform: lowercase;
-    font-size: 4rem;
-    border-right: .1em solid;
-	width: 6ch; /* # of chars */
+	font-family: 'Roboto', sans-serif;
+	text-transform: lowercase;
+	font-size: 4rem;
 	white-space: nowrap;
 	overflow: hidden;
-    animation: typing 0.8s steps(6, end), /* # of steps = # of chars */
-    blink-caret .5s step-end 0s alternate;
 }
 
 h2 {
-    font-family: 'Roboto', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
-h3,h5,p {
-    display: inline;
+h3,
+h5,
+p {
+	display: inline;
 }
 
 .topics {
-    margin-top: 3em;
+	margin-top: 3em;
 }
 
 .topic_title {
-    margin-top:20px;
-    margin-bottom:2px;
+	margin-top: 20px;
+	margin-bottom: 2px;
 }
 
 .post_title {
-    margin-right: 20px;
+	margin-right: 20px;
 }
 
 .thumbpic {
-    margin-left: 10px;
-    margin-right: 10px;
-}
-
-.btn {
-    border-radius: 0 !important;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 #topic-add {
-    text-align: center;
-}
-#topic-add a { opacity: 0.5; transition: 0.3s; }
-#topic-add a:hover { opacity: 1; }
-
-#theme-wrapper {
-    position: fixed; 
-    bottom: 0%;
+	text-align: center;
 }
 
-footer {
-    margin-left: 1rem;
-}
-
-#theme-wrapper input[type=checkbox]{
-	height: 0;
-	width: 0;
-	visibility: hidden;
-}
-
-#theme-wrapper label {
-    cursor: pointer;
-    text-indent: -9999px;
-	width: 50px;
-	height: 20px;
-	background: grey;
-	display: block;
-	border-radius: 12px;
-	position: relative;
-}
-
-#theme-wrapper label:after {
-	content: '';
-	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 10px;
-	height: 10px;
-	background: #fff;
-	border-radius: 10px;
+#topic-add a {
+	opacity: 0.5;
 	transition: 0.3s;
 }
 
-#theme-wrapper input:checked + label {
-	background: #bada55;
+#topic-add a:hover {
+	opacity: 1;
 }
 
-#theme-wrapper input:checked + label:after {
-	left: calc(100% - 5px);
-	transform: translateX(-100%);
-}
-
-#theme-wrapper label:active:after {
-	width: 30px;
+footer {
+	margin-left: 1rem;
 }

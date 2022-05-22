@@ -7,9 +7,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
         <!-- Custom css -->
         <link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
@@ -19,64 +16,35 @@
     <body>
         
 
-        <div class="row vertical-align header">
-                <div class="col-3 offset-1">
+        <div class="">
+                <div class="">
                     <a href ="{% url 'forum-index' %}"><i class="fas fa-comments fa-3x home-btn"></i></a>
                 </div>
                 {% if user.is_authenticated %}
-                    <div class="col-1 offset-5 text-right align-self-center">
+                    <div class="">
                         <a href="{% url 'logout' %}"><h3>log out</h3></a>
                     </div>
-                    <div class="col-1 text-right align-self-center">
-                            <a href="{% url 'profile' username=user.username %}"><img class="rounded-circle account-img thumbpic" src="{{ user.profile.image.url }}" height="50"></a>
+                    <div class="">
+                            <a href="{% url 'profile' username=user.username %}"><img class="thumbpic" src="{{ user.profile.image.url }}" height="50"></a>
                             
                         </div>
                 {% else %}
-                    <div class="col-1 offset-5 text-right align-self-center">
+                    <div class="">
                         <a href="{% url 'login' %}"><h3>log in</h3></a>
                     </div>
-                    <div class="col-1 text-right align-self-center">
+                    <div class="">
                         <a href="{% url 'registration' %}"><h3>register</h3></a>
                     </div>
                 {% endif %}
             </div>
-        <div class="container-fluid">
+        <div class="">
             {% block content %}{% endblock %}
         </div>
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="{% static 'js/headings.js' %}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 
     <footer>
-        <script src="{% static 'js/theme.js' %}"></script>
-
-        <script>
-            function loadThemeCSS(theme){
-                var fileref = document.createElement("link");
-                fileref.rel = "stylesheet";
-                fileref.type = "text/css";
-
-                if(theme == "dark"){
-                    fileref.href = "{% static 'css/dark-theme.css' %}";
-                }else{
-                    fileref.href = "{% static 'css/light-theme.css' %}";
-                }
-
-                document.getElementsByTagName("head")[0].appendChild(fileref);
-            }
-        </script>
         
-        <div id="theme-wrapper">
-            <p>Dark Mode</p>
-            <input class="switch" type="checkbox" id="darkSwitch" />
-            <label class="switch" for="switch" onclick="onThemeChange();">Toggle</label>
-        </div>
-
     </footer>
 
 </html>

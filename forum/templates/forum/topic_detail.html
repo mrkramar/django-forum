@@ -1,24 +1,24 @@
 {% extends "forum/base.html" %}
 {% block content %}
 
-    <div class="col-4 offset-4 mt-5">
+    <div class="">
         <h1 id="header">{{ object.title }}</h1>
     </div>
 
     {% if request.user.is_authenticated %}
-        <div class="col-4 offset-4">
-            <a class="btn btn-warning btn-sm mt-1 mb-1" href="{% url 'post-create' object.id %}">new post</a>
+        <div class="">
+            <a class="" href="{% url 'post-create' object.id %}">new post</a>
         </div>
     {% endif %}
 
     <div class="posts mt-5">
         {% for post in posts %}
-            <div class="row post mb-4">
-                <div class="col-4 offset-4 text-center">
+            <div class="">
+                <div class="">
                     <a href="{% url 'post-detail' post.id %}">
                         <h3 class="post_title">{{ post.title }}</h3></a> <p> by {{ post.author }} </p>
                         <a href="{% url 'profile' username=post.author.profile.user.username %}">
-                            <img class="rounded-circle account-img thumbpic" src="{{ post.author.profile.image.url }}" height="25">
+                            <img class="thumbpic" src="{{ post.author.profile.image.url }}" height="25">
                         </a>
                     </a>
                     <hr>
