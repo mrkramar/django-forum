@@ -1,25 +1,25 @@
-{% extends "forum/base.html" %}
-{% load crispy_forms_tags %}
+{% extends "forum/base.html" %} 
+{% load crispy_forms_tags %} 
 {% block content %}
 
-    <div class="row">
-        <div class="col-2 offset-5 mt-5">
-            <h1 style="width: 8ch;">new post</h1>
-        </div>
-    </div>
+<div class="">
+  <div class="">
+    <h1 style="width: 8ch">new post</h1>
+  </div>
+</div>
 
-    <div class="row">
-        <div class="col-2 offset-5 mt-5">
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset class="form-group">
-                    {{ form|crispy }}
-                </fieldset>
-                <div class="form-group">
-                    <button class="btn btn-outline-info" type="submit">Create</button>
-                </div>
-            </form>
-        </div>
-    </div>
+<div class="">
+  <div class="">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="">{{ form|crispy }}</fieldset>
+      <div class="">
+        <button class="" type="submit">
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 
-{% endblock content %} 
+{% endblock content %}
