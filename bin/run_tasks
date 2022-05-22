@@ -1,0 +1,4 @@
+#!/bin/sh
+
+chmod u+x bin/migrate_db && ./bin/migrate_db \
+chmod u+x bin/create_admins && ./bin/create_admins
