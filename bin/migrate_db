@@ -1,0 +1,3 @@
+#!/bin/sh
+cat << EOF | python manage.py migrate
+EOF

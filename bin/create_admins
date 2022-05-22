@@ -1,0 +1,12 @@
+#!/bin/sh
+cat << EOF | python manage.py shell
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+User.objects.filter(username="momo").exists() or \
+    User.objects.create_superuser("momo", "", "")
+
+User.objects.filter(username="vide").exists() or \
+    User.objects.create_superuser("vide", "", "")
+EOF
