@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 
+"""
+Att ha med i profilen:
+- Träningsschema
+- Kost 
+- Kontaktinformation för PT uppdrag 
+"""
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
