@@ -1,9 +1,12 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from django.views.decorators.http import require_http_methods
 
 from .forms import UserRegistrationForm, UserUpdateForm, ProfileUpdateForm
 
@@ -32,7 +35,23 @@ def login(request):
     return render(request, "users/login.html")
 
 
+@require_http_methods(["GET"])
 def profile(request, username=None):
+    try:
+        profile_user = User.objects.get(username=username)
+    except ObjectDoesNotExist:
+        return HttpResponse("No user with that username exists...")
+
+    context = {
+        "posts": Post.objects.filter(author=profile_user),
+        "profile_user": profile_user,
+    }
+
+    return render(request, "users/profile.html", context)
+
+
+@login_required
+def edit_profile(request, username=None):
     if request.method == "POST":
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(
@@ -60,4 +79,4 @@ def profile(request, username=None):
             user = User.objects.get(username=username)
             context["user"] = user
 
-    return render(request, "users/profile.html", context)
+    return render(request, "users/edit_profile.html", context)

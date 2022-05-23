@@ -1,46 +1,56 @@
 {% extends "forum/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
     <div class="">
         <div class="">
-            <h3 id="header">{{ profile_user.username }}</h3>
+            <h1 id="header">{{ user.username }}</h1>
         </div>
     </div>
 
     <div class="">
         <div class="">
-            <img class="account-img" src="{{ profile_user.profile.image.url }}" height="200">
+            <img class="account-img" src="{{ user.profile.image.url }}" height="200">
         </div>
     </div>
 
-    {% if profile_user == request.user %}
+    {% if user == request.user %}
+    <div class="">
+        <div class="">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="">
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </fieldset>
+                <div class="">
+                    <button class="" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-    <div>
-        <div>
-            <a href="{% url 'edit-profile' request.user.username %}">Edit Profile</a>
+    {% else %}
+    <div class="">
+        <div class="">
+            <p>About:</p>
+            <p>{{ user.profile.about }}</p>
         </div>
     </div>
 
     {% endif %}
 
-    <div class="">
-        <div class="">
-            <p>About:</p>
-            <p>{{ profile_user.profile.about }}</p>
-        </div>
-    </div>
-
     {% if posts %}
     
         <div class=" ">
             <div class="">
-                <h3>User posts</h3>
+                <h2>User posts</h2>
             </div>
         </div>
 
         {% for post in posts %}
             <div class="">
-                <div class="">
+                <div class="c">
                     <img class="thumbpic" src="{{ post.author.profile.image.url }}" height="50">
                 </div>
                 <div class="">

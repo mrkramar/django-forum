@@ -12,6 +12,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("registration/", user_views.registration, name="registration"),
     path("profile/<slug:username>", user_views.profile, name="profile"),
+    path("profile/<slug:username>/edit", user_views.edit_profile, name="edit-profile"),
     path(
         "login/",
         auth_views.LoginView.as_view(template_name="users/login.html"),
